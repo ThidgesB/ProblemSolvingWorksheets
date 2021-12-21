@@ -7,6 +7,14 @@
 def reverse_a_string(reversed_string):
     return reversed_string[::-1]
 
-favorite_game = 'Dark Souls'
+favorite_game = 'dark souls'
 
 print(reverse_a_string(favorite_game))
+
+#Utilizing the Title() function, we can capitalize the first letter of every word in a string.
+#However, strings with numbers may cause issues. Looking into this
+
+def capitalize_each_word_in_string(capitalized_string):
+    return capitalized_string.title()
+
+print(capitalize_each_word_in_string(favorite_game))
