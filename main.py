@@ -5,9 +5,8 @@
 #a positive number would have a similar effect, however it always starts at Index position 0
 
 def reverse_a_string(reversed_string):
-    return reversed_string[::2]
+    return reversed_string[::-1]
 
 favorite_game = 'Dark Souls'
 
-reverse_a_string(favorite_game)
 print(reverse_a_string(favorite_game))
