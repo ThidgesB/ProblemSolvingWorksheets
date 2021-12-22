@@ -26,28 +26,71 @@ print(capitalize_each_word_in_string(favorite_game))
 
 print(reverse_a_string(capitalize_each_word_in_string(favorite_game)))
 
-def string_compression(compressed_string):
-    index = 0                                       #variable holding an integer value of 0
-    compressed = ''                                 #variable holding an empty string
-    string_length = len(compressed_string)          #variable is equal to the length of the string we want to compress
-    while index != string_length:                   #while integer value is not equal to the length of the string
-        count = 1                                   #variable "count" is set to 1
-        while (index < string_length -1) and (compressed_string[index] == compressed_string[index+1]): 
-            count = count + 1
-            index = index +1
-        if count == 1:
-            compressed += str(compressed_string[index])
-        else:
-            compressed += str(compressed_string[index]) + str(count)
-        index = index + 1
-    return compressed
+#Below is an example of a function that compresses strings in an argument.
+
+# def string_compression(compressed_string):
+#     index = 0                                       #variable holding an integer value of 0
+#     compressed = ''                                 #variable holding an empty string
+#     string_length = len(compressed_string)          #variable is equal to the length of the string we want to compress
+#     while index != string_length:                   #while integer value is not equal to the length of the string
+#         count = 1                                   #variable "count" is set to 1
+#         while (index < string_length -1) and (compressed_string[index] == compressed_string[index+1]): 
+#             count = count + 1
+#             index = index +1
+#         if count == 1:
+#             compressed += str(compressed_string[index])
+#         else:
+#             compressed += str(compressed_string[index]) + str(count)
+#         index = index + 1
+#     return compressed
 
 #print(string_compression(example))
+# we will need a variable to hold our current count
+#need a varable to hold our final string = ""
+#need a variable for last_character and this could start with the value of string[0]
+# we can for loop over our string = we know this will loop over each individual letter 
+# inside for loop we should have an if and an else = these will look at the previous letter to determine what to do
+# if our current letter == our last letter then we would want to add to a counter 
 
-#the above example is complex and I dont fully udnerstand it yet, let's try something else.
-#StackOverflow forum suggests I use a python function called zlib, lets test it here:
+# if letter == last_letter:
+#   current_count += 1
+# else:
+# make a varable  += our str(current count) + last character variable
+# reset counter to 0      counter variable = 0 
+# set our last character variable to the current letter 
 
-import zlib
+def compress_string(string_being_compressed):
+    final_string = ''
+    counter = 0
+    previous_letter = ''
+    character_count = 0
+    string_length = len(string_being_compressed)
+    for letter in string_being_compressed:
+        counter += 1
+        if previous_letter == '':
+            previous_letter = letter
+        else:
 
-comp = zlib.compress(example)
-print(comp)
+            if previous_letter == letter:
+                character_count += 1
+            else:
+                character_count += 1
+                final_string += str(character_count) + previous_letter
+                character_count = 0
+                previous_letter = letter
+
+            if string_length == counter:
+                character_count +=1
+                final_string += str(character_count) + previous_letter
+                
+    print(final_string)
+
+(compress_string(example))
+
+def palindrome_finder(potential_palindrome):
+    if potential_palindrome == reverse_a_string(potential_palindrome):
+        print('It\'s a Palindrome!')
+    else:
+        print('Not a Palindrome!')
+
+palindrome_finder(input('Please enter a word to check if it\'s a Palindrome.'))
